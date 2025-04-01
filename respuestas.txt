@@ -2,3 +2,7 @@
 No se puede ver el archivo tp2_1_2.c porque no fue creado en la rama main, sino que fue creado en la rama Opcion_2.
 
 En VSCode vuelva al “Source Control” ¿Qué diferencias nota?
+que el commit que se realizo en la rama Opcion_2 se quedo entre el commit inicial y el commit de nota de respuestas
+
+● En VSCode vuelva al “Source Control” vea los cambios, ¿Qué nota?
+que el archivo tp2_1_2.c se creo en la rama Opcion_2, y una especie de conexion de los commit con el merge de la rama Opcion_2 con la rama main.
