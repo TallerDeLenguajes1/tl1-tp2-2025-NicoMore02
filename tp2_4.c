@@ -11,6 +11,8 @@ struct compu {
     char *tipo_cpu; // Tipo de procesador
 } typedef tCompu;
 
+//FUNCIONES//
+void mostrarpc(tCompu *pc, int n);
 
 int main () {
     srand(time(NULL)); // Semilla para generar números aleatorios
@@ -20,7 +22,7 @@ int main () {
     tCompu *pc = malloc(total_pcs * sizeof(tCompu));
 
     //listas de cpu disponibles
-    char *tipos_cpu[6][10] = {"Intel", "AMD", "Celeron", "Athlon", "Core", "Pentium" };
+    char *tipos_cpu[6] = {"Intel", "AMD", "Celeron", "Athlon", "Core", "Pentium" };
     
     //generacion aleatorias de datos para las 5 computadoras
     for ( i = 0; i < total_pcs; i++)
@@ -28,8 +30,27 @@ int main () {
         pc[i].tipo_cpu = tipos_cpu[rand() % 6];
         pc[i].velocidad = rand() % (3 - 1 + 1) + 1;
         pc[i].anio = rand() % (2024 - 2015 + 1) + 2015;
-        pc[i].cantidad_nucleos = rad() % (8 - 1 + 1) + 1;
+        pc[i].cantidad_nucleos = rand() % (8 - 1 + 1) + 1;
+    }
+
+    //Mostrar los datos de las 5 computadoras 
+    mostrarpc(pc, total_pcs);
+    
+    return 0;
+}
+
+//DEFINICION
+
+void mostrarpc(tCompu *pc, int n) {
+    puts("Listados de Computadoras");
+    for (int i = 0; i < n; i++)
+    {
+        printf("Computadora %d: \n", i + 1);
+        printf("Tipo de CPU: %s \n", pc[i].tipo_cpu);
+        printf("Velocidad de procesamiento: %d GHz \n", pc[i].velocidad);
+        printf("Anio de fabricacion: %d \n", pc[i].anio);
+        printf("Cantidad de nucleos: %d \n", pc[i].cantidad_nucleos);
+        printf("\n");
     }
     
-
 }
