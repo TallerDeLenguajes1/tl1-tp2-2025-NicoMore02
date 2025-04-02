@@ -14,6 +14,7 @@ struct compu {
 //FUNCIONES//
 void mostrarpc(tCompu *pc, int n);
 void mostrarMasVieja(tCompu *pc, int n);
+void mostrarMasVeloz(tCompu *pc, int n);
 
 int main () {
     srand(time(NULL)); // Semilla para generar números aleatorios
@@ -34,11 +35,14 @@ int main () {
         pc[i].cantidad_nucleos = rand() % (8 - 1 + 1) + 1;
     }
 
-    //Mostrar los datos de las 5 computadoras 
+    //Muestra los datos de las 5 computadoras 
     mostrarpc(pc, total_pcs);
+    //Muestra la computadora mas antigua
     mostrarMasVieja(pc, total_pcs);
+    //Muestra la computadora mas veloz
+    mostrarMasVeloz(pc, total_pcs);
 
-    
+    free(pc);
     return 0;
 }
 
@@ -69,4 +73,20 @@ void mostrarMasVieja(tCompu *pc, int n) {
     printf("El pc mas viejo es: \n");
     printf("Tipo de CPU: %s \n", pc[viejo].tipo_cpu);
     printf("Anio: %d\n", pc[viejo].anio);
+}
+
+void mostrarMasVeloz(tCompu *pc, int n) {
+    int veloz = 0;
+    for (int i = 1; i < n; i++)
+    {
+        if (pc[i].velocidad > pc[veloz].velocidad)
+        {
+            veloz = i;
+        }
+        
+    }
+    printf("La pc mas veloz es: \n");
+    printf("Tipo de CPU: %s \n", pc[veloz].tipo_cpu);
+    printf("Velocidad de procesamiento: %d GHz \n", pc[veloz].velocidad);
+    printf("Anio de fabricacion: %d \n", pc[veloz].anio);
 }
