@@ -13,6 +13,7 @@ struct compu {
 
 //FUNCIONES//
 void mostrarpc(tCompu *pc, int n);
+void mostrarMasVieja(tCompu *pc, int n);
 
 int main () {
     srand(time(NULL)); // Semilla para generar números aleatorios
@@ -35,6 +36,8 @@ int main () {
 
     //Mostrar los datos de las 5 computadoras 
     mostrarpc(pc, total_pcs);
+    mostrarMasVieja(pc, total_pcs);
+
     
     return 0;
 }
@@ -53,4 +56,17 @@ void mostrarpc(tCompu *pc, int n) {
         printf("\n");
     }
     
+}
+
+void mostrarMasVieja(tCompu *pc, int n) {
+    int viejo = 0;
+    for (int i = 1; i < n; i++)
+    {
+        if (pc[i].anio < pc[viejo].anio) {
+            viejo = i;
+        }
+    }
+    printf("El pc mas viejo es: \n");
+    printf("Tipo de CPU: %s \n", pc[viejo].tipo_cpu);
+    printf("Anio: %d\n", pc[viejo].anio);
 }
